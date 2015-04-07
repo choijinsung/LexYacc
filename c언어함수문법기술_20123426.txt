@@ -1,0 +1,61 @@
+﻿<function> ::= <type> <identifier> '(' <args> ')' '{' <decl_stmts> <stmts> '}'
+
+<type> ::= 'void' | 'int' | 'char' | 'float' | 'double' | <array> | <struct_decl> | <pointer>
+
+<identfier> ::= <letter> | <identifier> <letter> | <identifier> <digit>
+
+<letter> ::= '_' | 'A' | 'B' | ... | 'Z' | 'a' | 'b' | ...| 'z'
+
+<integer> ::= <digit> | <digit><integer>
+
+<digit> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+
+<number> ::= <digit> | <number> <digit>
+
+<args> ::= <type_only> | <type_and_iden>
+
+<type_only> ::= <type> | <type> ',' <type_only>
+
+<type_and_iden> ::= <type> <identifier> | <type> <identifier> ',' <type_and_iden> 
+
+<decl_stmts> ::= <decl_statement> | <decl_statement> <decl_stmts>
+
+<decl_statement> ::= <type> <id_list> ';' | <type> <array_list> ';'
+
+<id_list> ::= <identifier> | <identifier> ',' <id_list>
+
+<array_list> ::= <identifier> '[' <number> ']' | <array_list> '[' <number> ']'
+
+<stmts> ::= <statement> | <statement> <stmts>
+
+<statement> ::= <sub_stmt> | <if_stmt> | <for_stmt> | <while_stmt> | <switch_stmt> | <return_stmt> | <break_stmt> | <cont_stmt>
+
+<sub_stmt> ::= <identifier> '=' <expression> ';'
+
+<expression‍> ::= <expression‍> <num_op> <expression‍>
+
+<num_op> ::= '+ | '-' | '*' | '/' | '>' | '>=' | '<' | '<=' | '==' | '!=' | '%'
+
+<if_stmt> ::= 'if' <expression> <stmts> | 'if' <expression> <stmts> 'else' <stmts>
+
+<for_stmt> ::= 'for' '(' <statement> ';' <statement> ';' <statement> ')' { <stmts> }
+
+<while_stmt> ::= 'while' '(' <expression> ')' '{' <stmts> '}' 
+
+<switch_stmt> ::= 'switch' '(' <identifier> ')' '{' <case_stmt> '}' 
+
+<case_stmt> ::= 'case' <letter_or_number> ':' <stmts> <break_stmt> | 'case' <letter_or_number> ':' <stmts> <break_stmt> <case_stmt>
+
+<letter_or_number> ::= <letter> | <number>
+
+<return_stmt> ::= 'return'';' | 'return' <number> ';' | 'return' '-' <number> ';'
+
+<break_stmt> ::= 'break' ';'
+
+<cont_stmt> ::= 'continue' ';'
+
+<array> ::= <type> '[' <number> ']' | <array> '[' <number> ']'
+
+<struct_decl> ::= 'struct' '{' <type_and_iden> '}'
+
+<pointer> ::= <type> '*'
